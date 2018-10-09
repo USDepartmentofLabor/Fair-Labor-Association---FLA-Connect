@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>954996086949-qfu90f0mm5glajfa6p9gm7am8b3ci8as.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.954996086949-qfu90f0mm5glajfa6p9gm7am8b3ci8as</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>954996086949-2hugpn8v1qidsk35v0kd4bq5php4um6c.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcXODOUTBJ8iJrCjfdyRnGTeWPmBKdT2I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>954996086949</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.doktar.fla.destek</string>
+	<key>PROJECT_ID</key>
+	<string>flaconnect-1504181179406</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flaconnect-1504181179406.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:954996086949:ios:76e15f95575066d6</string>
+	<key>DATABASE_URL</key>
+	<string>https://flaconnect-1504181179406.firebaseio.com</string>
+</dict>
+</plist>

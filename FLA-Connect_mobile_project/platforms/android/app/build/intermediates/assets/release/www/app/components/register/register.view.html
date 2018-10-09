@@ -1,0 +1,105 @@
+<ion-view hide-back-button="true" title="{{ translate('Create Account')}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-footer">
+
+    <p class="padding">
+      {{ translate('You can complete the membership process by filling out the form below.') }}
+    </p>
+    <form name="register.registerForm" novalidate="" ng-submit="register.doRegister()" style="margin:0;">
+      <div class="list">
+        <div class="form-errors" ng-show="register.registerForm.$submitted">
+          <div class="form-error" ng-bind-html="error" ng-repeat="error in register.serverErrors track by $index"></div>
+        </div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Username') }}</span>
+          <input type="text" ng-model="register.registerData.name" placeholder="{{ translate('Username') }}" name="name" set-valid-after-change="name-taken"
+            name-taken required spellcheck="false">
+          <ng-messages class="form-errors" for="register.registerForm.name.$error" ng-if="register.registerForm.name.$touched &&  register.registerForm.name.$invalid || register.registerForm.name.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.') }}</div>
+            <div class="form-error" ng-message="name-taken">{{ translate('This name is already taken.')}}</div>
+          </ng-messages>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Home City') }}</span>
+          <input type="text" ng-model="register.registerData.field_homecity.und[0].value" placeholder="{{ translate('Home City') }}"
+            name="homeCity" required set-valid-after-change="email-taken" email-taken spellcheck="false">
+          <ng-messages class="form-errors" for="register.registerForm.homeCity.$error" ng-if="register.registerForm.homeCity.$touched &&  register.registerForm.homeCity.$invalid ||  register.registerForm.homeCity.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.')}}</div>
+          </ng-messages>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Location of Employment') }}</span>
+          <input type="text" ng-model="register.registerData.field_location.und[0].value" placeholder="{{ translate('Location of Employment') }}"
+            name="location" required set-valid-after-change="email-taken" email-taken spellcheck="false">
+          <ng-messages class="form-errors" for="register.registerForm.location.$error" ng-if="register.registerForm.location.$touched &&  register.registerForm.location.$invalid ||  register.registerForm.location.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.')}}</div>
+          </ng-messages>
+        </label>
+
+        <!-- <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Line of Work') }}</span>
+          <select ng-model="register.registerData.field_location.und[0].value1" >
+            <option value="Seasonal Agricultural Worker">Seasonal Agricultural Worker</option>
+            <option value="Factory Worker">Factory Worker</option>
+          </select>
+          <ng-messages class="form-errors" for="register.registerForm.location.$error" ng-if="register.registerForm.location.$touched &&  register.registerForm.location.$invalid ||  register.registerForm.location.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.')}}</div>
+          </ng-messages>
+        </label> -->
+
+        <label class="item item-input item-floating-label" ng-class="{ 'has-error':  register.registerData.field_lineofwork.und[0].value.$touched &&  register.registerData.field_lineofwork.und[0].value.$invalid
+        ||  register.registerData.field_lineofwork.und[0].value.$invalid && register.registerForm.$submitted}">
+          <span class="input-label">{{ translate('Line of Work') }}</span>
+          <select ng-model="register.registerData.field_lineofwork.und[0].value" class="ion-input-select" required="required" name="lineofwork">
+            <option value="" disabled selected>{{ translate ('Line of Work') }}</option>
+            <option value="Seasonal Agricultural Worker"> {{ translate ('Seasonal Agricultural Worker') }} </option>
+            <option value="Factory Worker"> {{ translate ('Factory Worker') }} </option>
+          </select>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Email') }}</span>
+          <input type="email" ng-model="register.registerData.mail" placeholder="{{ translate('Email') }}" name="mail" required set-valid-after-change="email-taken"
+            email-taken spellcheck="false">
+          <ng-messages class="form-errors" for="register.registerForm.mail.$error" ng-if="register.registerForm.mail.$touched &&  register.registerForm.mail.$invalid ||  register.registerForm.mail.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.')}}</div>
+            <div class="form-error" ng-message="mail">{{ translate('This is no valid mail.')}}</div>
+            <div class="form-error" ng-message="email-taken">{{ translate('This email is already taken.')}}</div>
+          </ng-messages>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Phone Number') }}</span>
+          <input type="tel" ng-model="register.registerData.pmperson_phone.und[0].value" placeholder="{{ translate('Phone Number') }}"
+            name="phone" required set-valid-after-change="email-taken" email-taken spellcheck="false">
+          <ng-messages class="form-errors" for="register.registerForm.phone.$error" ng-if="register.registerForm.phone.$touched &&  register.registerForm.phone.$invalid ||  register.registerForm.phone.$invalid && register.registerForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.')}}</div>
+          </ng-messages>
+        </label>
+        <!-- <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Password')}}</span>
+          <input type="password" placeholder="{{ translate('Password')}}" name="pass" ng-model="register.registerData.pass" required>
+          <ng-messages class="form-errors" ng-if="register.registerForm.pass.$invalid && register.registerForm.pass.$touched" for="register.registerForm.pass.$error">
+            <div ng-message="required">{{ translate('This field is required.')}}</div>
+          </ng-messages>
+        </label> -->
+        <div class="padding">
+          <button class="button button-block button-positive button-spinner" style=" background-color: #37474f;">
+            <span ng-if="!register.registerIsPending">{{ translate('Create Account')}}</span>
+            <span ng-if="register.registerIsPending">{{ translate('Creating Account')}}</span>
+            <ion-spinner ng-if="register.registerIsPending"></ion-spinner>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="padding">
+        <button class="button button-block button-positive" ng-click="register.goToLogin()" style=" background-color: #37474f;">
+            <span>{{ translate('Login')}}</span>
+          </button>
+    </div>
+  </ion-content>
+</ion-view>

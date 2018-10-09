@@ -1,0 +1,37 @@
+#girisView #skip {
+
+}
+
+
+#girisView .ion-slides {
+  bottom: 0px;
+  position: absolute;
+
+  .swiper-slide {
+    padding-top: 60px;
+    text-align: center;
+    background:#eee;
+    height: 100%;
+    width: 100%;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    bottom: 90px;
+  }
+
+
+
+}
+
+#girisView {
+  h2 {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }  
+}
+

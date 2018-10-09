@@ -1,0 +1,146 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function firebase_menu() {
+  $items = array();
+  $items['admin/config/services/firebase'] = array(
+      'title' => 'Firebase settings',
+      'description' => 'Configure firebase module settings.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('firebase_admin_settings'),
+      'access arguments' => array('administer nodes'),
+      'file' => 'firebase.admin.inc',
+      'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function firebase_entity_insert($entity, $type) {
+  firebase_entity_update($entity, $type, 'insert');
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function firebase_entity_delete($entity, $type) {
+  firebase_entity_update($entity, $type, 'delete');
+}
+
+/**
+ * Implements hook_entity_update(). Pushes changes to entities into firebase.
+ */
+function firebase_entity_update($entity, $type, $event = 'update') {
+  // Check if entity should be pushed to Firebase
+  if (variable_get('view_mode_' . $type,  '<none>') == '<none>') {
+    return;
+  }
+  // firebase url under which all data is stored
+  $base_url = variable_get('firebase_url');
+  $auth = variable_get('firebase_secret');
+  if (empty($base_url)) {
+    return;
+  }
+  // Update index then add content
+
+  // @TODO The index functions
+  //_firebase_update_entity_index($base_url, $auth, $entity, $type, $event);
+  _firebase_update_entity($base_url, $auth, $entity, $type, $event);
+  
+}
+
+function _firebase_update_entity_index($base_url, $auth, $entity, $event) {
+  // @TODO all of this. Perhaps use EFQ to build an index with entity type, ID, label, date created/updated etc.
+  $nodes = $query->execute()->fetchAll();
+  $url = $base_url . '/frontpage';
+  $retval =_curl_json($url, $auth, $nodes, 'PUT');
+  if ($retval === FALSE) {
+    $link = l('node', 'node/' . $node->nid);
+    watchdog('firebase', 'Failed to make JSON REST request to %url for nid %nid.', array('%url' => $url, '%nid' => $node->nid), WATCHDOG_ERROR, $link);
+  }
+}
+
+/**
+ * Update entity in Firebase
+ *
+ * @param type $base_url
+ * @param type $auth
+ * @param type $entity
+ * @param type $type
+ * @param type $event
+ */
+function _firebase_update_entity($base_url, $auth, $entity, $type, $event) {
+  list($id, $vid, $bundle) = entity_extract_ids($type, $entity);
+  $label = entity_label($type, $entity);
+  $view_mode = variable_get('firebase_view_mode_' . $type);
+  $entity_uri = entity_uri($type, $entity);
+  $entity_content = entity_view($type, array($entity), $view_mode);
+  $updates = array(
+    'type' => $type,
+    'bundle' => $bundle,
+    'id' => $id,
+    'label' => $label,
+    'entity_uri' => $entity_uri['path'],
+    'path_alias' => drupal_get_path_alias($entity_uri['path']),
+    'content' => drupal_render($entity_content)
+    );
+
+  
+  //kpr(json_encode($updates));
+  
+//  exit;
+/*
+  if ($event == 'delete') {
+    // 
+    $command = array('cmd' => 'remove', 'selector' => "#node-$node->nid", '.priority' => REQUEST_TIME);
+  } elseif ($event == 'update') {
+    // send 'update' command to all watchers
+    $node_view = node_view($node, 'teaser');
+    unset($node_view['#contextual_links']); // strip contextual links, as others may not have permissions to use them
+    $command = array('cmd' => 'update', 'selector' => "#node-$node->nid", 'data' => render($node_view), '.priority' => REQUEST_TIME);
+  } else {
+    // send 'reload' command to all watchers
+    $command = array('cmd' => 'reload', '.priority' => REQUEST_TIME);
+  }*/
+  $url = $base_url;
+  $return_value = _firebase_request($url . '/entities/' . $type . '/' . $id, $auth, $updates, "PATCH");
+  if (isset($return_value['error'])) {
+    //$link = l('node', 'node/' . $node->nid);
+    watchdog('firebase', 'Failed to make JSON REST request to %url for entity ID %id. Error %error: %error_message',
+      array('%url' => $url . '/entity/' . $type . '/' . $id, '%id' => $id, '%error' => $return_value['code'], '%error_message' => $return_value['error']), WATCHDOG_ERROR);
+    drupal_set_message('Error updating Firebase. See DB log for details.', $type);
+  }
+}
+
+/**
+ * Perform Firebase request
+ *
+ * @param string $url
+ * @param string $auth
+ * @param array $data
+ * @param string $request_method
+ */
+function _firebase_request($url, $auth, $data, $request_method = NULL) {
+  // Add json and auth to URL
+  $url = $url . ".json" . "?auth=" . $auth;
+
+  // Clear options array
+  $options = array();
+
+  // Set headers
+  $options['headers'] = array("Content-Type" => "application/json");
+
+  // Set data
+  $options['data'] = json_encode($data);
+
+  // Perform a request method other than default GET/POST
+  if ($request_method) {
+    $options['method'] = $request_method;
+  }
+
+  return drupal_http_request($url, $options);
+}

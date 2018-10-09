@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * Functions for the PM Note module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pmnote_install() {
+  variable_set('node_options_pmnote', array('status'));
+
+  // PM Permissions default configurations.
+  variable_set('pmpermission_field_parent_reference_for_pmnote', 'pmnote_parent');
+  variable_set('pmpermission_node_pmnote_enabled', TRUE);
+
+  // Create and attaches fields to pmnote content type.
+  module_load_include('inc', 'pmnote', 'includes/pmnote.migrate');
+
+  // Parameter $sandbox is passed as a placeholder.
+  $sandbox = array();
+  pmnote_migrate_create_fields($sandbox);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pmnote_uninstall() {
+  variable_del('pmpermission_field_parent_reference_for_pmnote');
+  variable_del('pmpermission_node_pmnote_enabled');
+  // Clean up field instances (and field) and its data.
+  module_load_include('inc', 'pmnote', 'includes/pmnote.field_instance');
+  module_load_include('inc', 'pmnote', 'includes/pmnote.field_base');
+  $declared_field_bases = pmnote_default_field_bases();
+  $declared_field_instances = pmnote_default_field_instances();
+  $field_instance = field_info_instances('node', 'pmnote');
+
+  foreach ($declared_field_instances as $declared_instance) {
+    $instance = $field_instance[$declared_instance['field_name']];
+    if ($instance) {
+      // Only delete field base if declared by this module.
+      $delete_field_base = isset($declared_field_bases[$declared_instance['field_name']]);
+      field_delete_instance($instance, $delete_field_base);
+    }
+  }
+}
+
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function pmnote_update_last_removed() {
+  return 6201;
+}
+
+/**
+ * Migrate PM Note nodes to field_api fields.
+ */
+function pmnote_update_7104(&$sandbox) {
+  module_load_include('inc', 'pmnote', 'includes/pmnote.migrate');
+
+  if (pmnote_migrate_update_could_be_performed()) {
+    return pmnote_migrate($sandbox);
+  }
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function pmnote_update_dependencies() {
+  // pmperson_update_7104() migrates pmperson data to drupal user.
+  // pmnote migration depends on its completion.
+  $dependencies['pmnote'][7103] = array(
+    'pmperson' => 7104,
+  );
+
+  return $dependencies;
+}

@@ -1,0 +1,15 @@
+name = PM Person
+description = "Allows storage of people within organizations, and linking of these to Drupal user accounts."
+dependencies[] = pm
+dependencies[] = link
+package = Project Management
+core = 7.x
+
+files[] = pmperson.test
+
+; Information added by Drupal.org packaging script on 2016-04-18
+version = "7.x-2.2"
+core = "7.x"
+project = "pm"
+datestamp = "1461007768"
+

@@ -1,0 +1,14 @@
+name = RESTful Web Services Views
+
+dependencies[] = views
+dependencies[] = restws
+
+files[] = includes/RestWSViewsFormatJSON.inc
+files[] = includes/RestWSViewsFormatXML.inc
+files[] = includes/ViewsResourceController.inc
+; Information added by Drupal.org packaging script on 2014-08-29
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "restws_views"
+datestamp = "1409308430"
+

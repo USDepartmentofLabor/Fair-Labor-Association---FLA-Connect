@@ -1,0 +1,99 @@
+<?php
+/**
+ * @file
+ * Banckle Helpdesk
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function banckle_helpdesk_permission() {
+  return array(
+      'access banckle helpdesk dashboard' => array(
+        'title' => t('Capture tickets with Banckle Helpdesk'),
+        'description' => t('Perform configuration and maintenance tasks for Banckle Helpdesk.')
+      )
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function banckle_helpdesk_menu() {
+  $items = array();
+
+  $items['admin/config/system/banckle/helpdesk'] = array(
+    'title' => 'Banckle Helpdesk',
+    'description' => 'Configuration for Banckle Helpdesk',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array(
+      'banckle_helpdesk_form'
+    ),
+    'access arguments' => array(
+      'administer site configuration'
+    ),
+    'type' => MENU_NORMAL_ITEM
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback: Banckle Helpdesk settings.
+ *
+ * @ see banckle_helpdesk_menu()
+ */
+function banckle_helpdesk_form($form, &$form_state) {
+  $form['signup'] = array(
+    '#type' => 'item',
+    '#markup' => "Don't have Banckle account? <a href='http://banckle.com/action/signup?ref=https://apps.banckle.com' target=_blank>Sign Up for Free!</a>"
+  );
+  $form['banckle_helpdesk_widget_code'] = array(
+    '#type' => 'textarea',
+	"#rows" => 5,
+	"#cols" => 50,
+	"#width" => '200px',
+    '#title' => t('Banckle Helpdesk Widget Code'),
+    '#default_value' => variable_get('banckle_helpdesk_widget_code', NULL),
+    '#required' => TRUE
+  );
+  return system_settings_form($form);
+}
+
+/**
+ * Display error messages.
+ *
+ * @see banckle_helpdesk_theme()
+ */
+function banckle_helpdesk_theme() {
+  
+  $r = array(
+    'banckle_helpdesk_dashboard' => array(
+    'template' => 'banckle_helpdesk_dashboard'
+    )
+  );
+  
+  return $r;
+}
+
+/**
+ * Implements hook_block_info.
+ */
+function banckle_helpdesk_block_info() {
+  $blocks['banckle_helpdesk'] = array('info' => t('Banckle Helpdesk'));
+  return $blocks;
+}
+
+/**
+ * Implements banckle_helpdesk_block().
+ */
+function banckle_helpdesk_block_view($delta = '') {  
+  global $user;
+
+  $widget_code = variable_get('banckle_helpdesk_widget_code', NULL);
+  
+  $block['content'] = t(". $widget_code .");    
+
+  return $block;  
+  
+}

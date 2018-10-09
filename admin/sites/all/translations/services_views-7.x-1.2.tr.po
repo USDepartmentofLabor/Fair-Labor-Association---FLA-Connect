@@ -1,0 +1,28 @@
+# Turkish translation of Services Views (7.x-1.2)
+# Copyright (c) 2017 by the Turkish translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Services Views (7.x-1.2)\n"
+"POT-Creation-Date: 2017-08-07 18:44+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Yes"
+msgstr "Evet"
+msgid "No"
+msgstr "Hayır"
+msgid "None"
+msgstr "Hiçbiri"
+msgid "View"
+msgstr "Görüntüle"
+msgid "Path"
+msgstr "Yol"
+msgid "Services"
+msgstr "Hizmetler (Services)"
+msgid "Displays"
+msgstr "Görünümler"

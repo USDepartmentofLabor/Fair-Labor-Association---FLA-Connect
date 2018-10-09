@@ -1,0 +1,20 @@
+# Turkish translation of Logo Block (7.x-1.7)
+# Copyright (c) 2017 by the Turkish translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Logo Block (7.x-1.7)\n"
+"POT-Creation-Date: 2017-06-30 16:44+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "- None -"
+msgstr "- Hiçbiri -"
+msgid "Other"
+msgstr "Diğer"
+msgid "Image style"
+msgstr "Resim stili"

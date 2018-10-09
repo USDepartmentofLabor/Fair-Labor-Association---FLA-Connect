@@ -1,0 +1,18 @@
+<ion-view title="{{blogDetail.viewTitle || 'Detay'}}" id="blog">
+  <ion-content>
+    <div class="list card">
+      <div class="item" ng-class="http://fla.heartproject.io/admin/sites/default/files/{{blogDetail.field_yazi_resmi.und[0].filename}} !== false?'item-avatar':''">
+        <img ng-if="blogDetail.pathToUserImg" ng-src="{{blogDetail.pathToUserImg}}">
+        <h2>{{blogDetail.title}}</h2>
+      </div>
+
+      <div class="item item-body">
+        <img ng-if="blogDetail.pathToImg" class="full-image" ng-src="{{blogDetail.pathToImg}}">
+        <p ng-bind-html="blogDetail.body.und[0].value"> </p>
+      </div>
+    </div>
+
+
+  </ion-content>
+
+</ion-view>

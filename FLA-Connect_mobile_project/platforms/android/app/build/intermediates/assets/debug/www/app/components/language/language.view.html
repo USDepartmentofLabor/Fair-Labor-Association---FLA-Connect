@@ -1,0 +1,13 @@
+<ion-view id="languageView" view-title="{{ translate('Language Settings') }}">
+  <ion-nav-buttons side="left" ng-repeat="button in buttons">
+    <button class="button" ng-click="doSomething()">
+      I'm a button on the left of the navbar!
+    </button>
+  </ion-nav-buttons>
+        
+   <ion-content class="has-header fade-in has-footer reveal-animation">
+        <ion-radio ng-repeat="item in serverSideList" ng-value="item.value" ng-model="selectedLanguage" ng-click="serverSideChange(item)" name="server-side" class="item-content-custom">
+            {{ item.text }}
+        </ion-radio>
+    </ion-content>
+</ion-view>

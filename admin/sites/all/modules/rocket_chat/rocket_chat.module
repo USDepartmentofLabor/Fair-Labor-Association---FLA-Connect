@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Rocket.Chat Livechat Module.
+ *
+ * Created by PhpStorm.
+ * User: Sysosmaster
+ * Date: 30/12/16
+ * Time: 14:01.
+ */
+
+use RocketChat\RocketChat;
+
+/**
+ * Implements hook_page_alter().
+ */
+function rocket_chat_page_alter(&$page) {
+  // Make sure the Included class File is loaded.
+  module_load_include('class.inc', 'rocket_chat', 'RocketChat');
+  return RocketChat::hookPageAlter($page);
+}
+
+/**
+ * Implements hook_help().
+ */
+function rocket_chat_help($path, $arg) {
+  // Make sure the Included class File is loaded.
+  module_load_include('class.inc', 'rocket_chat', 'RocketChat');
+  return RocketChat::renderHelpPage($path, $arg);
+}
+
+/**
+ * Admin Page Render.
+ *
+ * @return array
+ *   Drupal render Array for the admin page.
+ */
+function rocket_chat_admin_page() {
+  // Make sure the Included class File is loaded.
+  module_load_include('class.inc', 'rocket_chat', 'RocketChat');
+  return RocketChat::renderAdminPage();
+}
+
+/**
+ * Implements hook_menu().
+ */
+function rocket_chat_menu() {
+  $menu = array(
+    'title' => 'Rocket.Chat Settings',
+    'description' => 'Description of your On this date settings page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('rocket_chat_admin_page'),
+    'access arguments' => array('rocket_chat admin'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/config/services/rocket_chat'] = $menu;
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function rocket_chat_permission() {
+  return array(
+    'rocket_chat admin' => array(
+      'title' => t('Access Rocket.Chat configuration menu'),
+      'description' => t('Be able to set the Rocket.Chat Server Settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}

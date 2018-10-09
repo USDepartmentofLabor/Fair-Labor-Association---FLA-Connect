@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rocket_chat module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function rocket_chat_uninstall() {
+  variable_del('rocket_chat_url');
+  variable_del('rocket_chat_route');
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="4" by="lint 3.0.0">
+
+    <issue
+        id="WifiManagerLeak"
+        severity="Fatal"
+        message="The WIFI_SERVICE must be looked up on the Application context or memory will leak on devices &lt; Android N. Try changing `this.cordova.getActivity()` to `this.cordova.getActivity().getApplicationContext()`"
+        category="Correctness"
+        priority="6"
+        summary="WifiManager Leak"
+        explanation="On versions prior to Android N (24), initializing the `WifiManager` via `Context#getSystemService` can cause a memory leak if the context is not the application context. Change `context.getSystemService(...)` to `context.getApplicationContext().getSystemService(...)`."
+        errorLine1="        WifiManager wifiManager = (WifiManager) this.cordova.getActivity().getSystemService(Context.WIFI_SERVICE);"
+        errorLine2="                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\musta\Desktop\TFS\FLA\FLA-Connect_mobile_project_30.12.2017\platforms\android\app\src\main\java\cordova\plugins\Diagnostic.java"
+            line="428"
+            column="49"/>
+    </issue>
+
+    <issue
+        id="WifiManagerLeak"
+        severity="Fatal"
+        message="The WIFI_SERVICE must be looked up on the Application context or memory will leak on devices &lt; Android N. Try changing `this.cordova.getActivity()` to `this.cordova.getActivity().getApplicationContext()`"
+        category="Correctness"
+        priority="6"
+        summary="WifiManager Leak"
+        explanation="On versions prior to Android N (24), initializing the `WifiManager` via `Context#getSystemService` can cause a memory leak if the context is not the application context. Change `context.getSystemService(...)` to `context.getApplicationContext().getSystemService(...)`."
+        errorLine1="        WifiManager wifiManager = (WifiManager) this.cordova.getActivity().getSystemService(Context.WIFI_SERVICE);"
+        errorLine2="                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\musta\Desktop\TFS\FLA\FLA-Connect_mobile_project_30.12.2017\platforms\android\app\src\main\java\cordova\plugins\Diagnostic.java"
+            line="518"
+            column="49"/>
+    </issue>
+
+</issues>

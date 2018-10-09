@@ -1,0 +1,144 @@
+<ion-view id="complaint" class="form-area" hide-back-button="false" title="{{ translate ('Support Request Form') }}">
+  <ion-nav-bar class="bar-energized">
+    <ion-nav-buttons side="left">
+      <button id="" class="button button-slide prev no-animation" ng-click="prev()" ng-show="activeIndex > 0" >
+        {{ translate ('BACK') }}
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+      <button id="" class="button button-slide next no-animation" ng-click="next()" ng-show="activeIndex < 2" >
+        {{ translate ('NEXT') }}
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-pane class="has-footer">
+    <form name="complaint.complaintForm" novalidate="" ng-submit="complaint.doComplaint()">
+      <div class="form-errors" ng-show="complaint.complaintForm.$submitted">
+        <div class="form-error" ng-bind-html="error" ng-repeat="error in complaint.serverErrors track by $index"></div>
+      </div>
+
+      <ion-slides options="complaint.options" class="ion-slides has-header" slider="data.slider" ng-if="true">
+        <ion-slide-page>
+          <ion-content>
+            <div class="list listform">
+              <h3><i class="fa fa-comment-o" aria-hidden="true"></i>{{ translate ('General Info') }}</h3>
+              <label class="item item-input req-wrapper">
+                <input type="text"
+                ng-model="complaint.complaintData.title"
+                name="title"
+                required=""
+                placeholder="{{ translate ('Subject') }}"
+                spellcheck="false">
+                <span class="req-area">{{ translate ('*Mandatory Fields') }}</span>
+              </label>
+              <label class="item item-input">
+                <input type="text"
+                ng-model="complaint.complaintData.who"
+                name="who"
+                placeholder="{{ translate ('Person or inst. subject to complaint') }}"
+                spellcheck="false">
+              </label>
+              <label class="item item-input">
+                <textarea ng-model="complaint.complaintData.description" rows="5" placeholder="{{ translate ('Details of your complaint') }}"></textarea>
+              </label>
+            </div>
+          </ion-content></ion-slide-page>
+
+          <ion-slide-page>
+            <ion-content><div class="list listform">
+              <h3>
+                <i class="fa fa-calendar" aria-hidden="true"></i>{{ translate ('Date & Location') }}</h3>
+                <label class="item"
+                ng-class="{ 'has-error':  complaint.complaintForm.name.$touched &&  complaint.complaintForm.name.$invalid
+                ||  complaint.complaintForm.name.$invalid && complaint.complaintForm.$submitted}">
+                <input  type="date" class="ios-fix" 
+                ng-model="complaint.complaintData.date"
+                name="name"
+                placeholder="{{ translate ('Date of Incidence') }}"
+                spellcheck="false">
+              </label>
+              <label class="item item-input select-label" ng-class="{ 'has-error':  complaint.complaintForm.koy.$touched &&  complaint.complaintForm.koy.$invalid
+              ||  complaint.complaintForm.koy.$invalid && complaint.complaintForm.$submitted}">
+              <select ng-model="complaint.complaintData.koy" class="ion-input-select" required="required" name="koy">
+                <option value="" disabled selected>{{ translate ('Location of employment') }}</option>
+                <option value="Aziziye">Aziziye</option>
+                <option value="Küçükkarasu">Küçükkarasu</option>
+                <option value="Kuzuluk">Kuzuluk</option>
+                <option value="Resuller">Resuller</option>
+                <option value="Küçükboğaz">Küçükboğaz</option>
+                <option value="Taşlıgeçit">Taşlıgeçit</option>
+                <option value="Kızılcık">Kızılcık</option>
+                <option value="Beyören">Beyören</option>
+                <option value="Melenağzı">Melenağzı</option>
+                <option value="Balatlı">Balatlı</option>
+                <option value="Demiraçma">Demiraçma</option>
+                <option value="Altunçay">Altunçay</option>
+              </select>
+              <span class="req-area">{{ translate ('*Mandatory Fields') }}</span>
+            </label>
+          </div></ion-content></ion-slide-page>
+
+           <ion-slide-page>
+            <ion-content><div class="list listform">
+              <h3>
+                <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                {{ translate ('Contact Information') }}</h3>
+                <label class="item item-input">
+                  <input type="text"
+                  ng-model="complaint.complaintData.name"
+                  name="name"
+                  placeholder="{{ translate ('Name & Surname') }}"
+                  spellcheck="false">
+                </label>
+                <label class="item item-input">
+                  <input type="number"
+                  ng-model="complaint.complaintData.number"
+                  name="phone"
+                  required="required" 
+                  placeholder="{{ translate ('Phone No.') }}"
+                  spellcheck="false">
+                </label>
+                <label class="item item-input"
+                ng-class="{ 'has-error':  complaint.complaintForm.email.$touched &&  complaint.complaintForm.email.$invalid
+                ||  complaint.complaintForm.email.$invalid && complaint.complaintForm.$submitted}">
+                <input type="email"
+                ng-model="complaint.complaintData.email"
+                name="email"
+                placeholder="{{ translate ('E-Mail') }}"
+                spellcheck="false">
+              </label>
+              <br>
+              <button type="submit" class="button button-large button-light button-spinner button-send">
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i><span ng-if="!complaint.complaintIsPending">{{ translate ('Submit') }}</span>
+                <span ng-if="complaint.complaintIsPending">{{ translate ('Submit') }}</span>
+                <ion-spinner ng-if="complaint.complaintIsPending"></ion-spinner>
+              </button>
+              <br>
+              <ng-messages class="form-success" ng-show="complaint.showSuccess">
+                {{ translate ('Form submission successful.') }} <br>{{ translate ('You will be contacted by our staff within 48 hours.') }} <br>{{ translate ('Thank you.') }}
+              </ng-messages>
+              <ng-messages class="form-errors error-message animate-repeat"
+              for="complaint.complaintForm.koy.$error"
+              ng-if="complaint.complaintForm.koy.$touched &&  complaint.complaintForm.koy.$invalid ||  complaint.complaintForm.koy.$invalid && complaint.complaintForm.$submitted">
+              {{ translate ('Please enter your Location of Employment') }} </br>
+            </ng-messages>
+            <ng-messages class="form-errors error-message animate-repeat"
+            for="complaint.complaintForm.title.$error"
+            ng-if="complaint.complaintForm.title.$touched &&  complaint.complaintForm.title.$invalid ||  complaint.complaintForm.title.$invalid && complaint.complaintForm.$submitted">
+            {{ translate ('Please enter the subject of your complaint.') }}
+          </ng-messages>
+          <br>
+          <ng-messages class="form-errors error-message animate-repeat"
+          for="complaint.complaintForm.phone.$error"
+          ng-if="complaint.complaintForm.phone.$touched &&  complaint.complaintForm.phone.$invalid ||  complaint.complaintForm.phone.$invalid && complaint.complaintForm.$submitted">
+          {{ translate ('Please enter your phone number.') }}
+        </ng-messages>
+      </ion-content></ion-slide-page>
+
+    </ion-slides>
+
+  </form>
+
+
+</ion-pane>
+</ion-view>

@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * This is the main module file.
+ * 
+ * @author Edx xu <jin.xu@insready.com>
+ */
+
+/**
+ * Implementation of hook_restws_resource_info()
+ */
+function restws_views_restws_resource_info() {
+  $path = drupal_get_path('module', 'restws_views') . '/includes/';
+  
+  $resources = array();
+  foreach (views_get_enabled_views() as $view_name => $view) {
+    $resources['views_' . $view_name] = array(
+      'label' => t('Views'),
+      'class' => 'ViewsResourceController',
+      'menu_path' => 'views/' . $view_name,
+      'view_name' => $view_name,
+    );
+  }
+  return $resources;
+}
+
+/**
+ * Implementation of hook_restws_request_alter()
+ */
+function restws_views_restws_request_alter(&$request) {
+  if (isset($request['resource']->view_name)) {
+    $format_name = $request['format']->getName();
+    $info = restws_get_format_info();
+    $format_handler_name = 'RestWSViewsFormat' . strtoupper($format_name);
+    
+    $request['format'] = new $format_handler_name($format_name, $info[$format_name]);
+  }
+}

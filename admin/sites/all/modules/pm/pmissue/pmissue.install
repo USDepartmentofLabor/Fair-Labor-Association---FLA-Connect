@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * Install, disable, uninstall and update functions for PM Issue module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pmissue_install() {
+  variable_set('node_options_pmissue', array('status'));
+
+  // PM Permissions default configurations.
+  variable_set('pmpermission_field_assigned_reference', 'pm_assigned');
+  variable_set('pmpermission_field_pm_reference', 'pm_manager');
+  variable_set('pmpermission_field_parent_reference_for_pmissue', 'pmissue_parent');
+  variable_set('pmpermission_node_pmissue_enabled', TRUE);
+
+  // Create and attaches fields to pmissue content type.
+  module_load_include('inc', 'pmissue', 'includes/pmissue.migrate');
+  pmissue_migrate_create_fields();
+}
+
+/**
+ * Implements hook_disable().
+ */
+function pmissue_disable() {
+  drupal_set_message(t('Nodes of type "Issue" have not been deleted on disabling Project Management Issue. Please note that they will now have reduced functionality, and will not be protected by Project Management Issue access controls.'), 'warning');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pmissue_uninstall() {
+  variable_del('pmpermission_field_parent_reference_for_pmissue');
+  variable_del('pmpermission_node_pmissue_enabled');
+  // Clean up field instances (and field) and its data.
+  module_load_include('inc', 'pmissue', 'includes/pmissue.field_instance');
+  module_load_include('inc', 'pmissue', 'includes/pmissue.field_base');
+  $declared_field_bases = pmissue_default_field_bases();
+  $declared_field_instances = pmissue_default_field_instances();
+  $field_instance = field_info_instances('node', 'pmissue');
+
+  foreach ($declared_field_instances as $declared_instance) {
+    $instance = $field_instance[$declared_instance['field_name']];
+    if ($instance) {
+      // Only delete field base if declared by this module.
+      $delete_field_base = isset($declared_field_bases[$declared_instance['field_name']]);
+      field_delete_instance($instance, $delete_field_base);
+    }
+  }
+}

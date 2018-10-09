@@ -1,0 +1,17 @@
+<ion-view id="blogView" class="blog" title="{{ translate ('News & Updates') }}" cache-view="false">
+  <ion-content>
+    <ion-refresher on-refresh="blog.doRefresh()"></ion-refresher>
+    <ion-list can-swipe="false" cache-view="false">
+      <ion-item ng-repeat="article in blog.articles | orderBy:'-created' track by article.nid"
+      class="item-icon-right item-thumbnail-left item-spinner-right"
+      ng-click="blog.openDetail(article)">
+      <img ng-src="http://fla.heartproject.io/admin/sites/default/files/{{article.field_yazi_resmi.und[0].filename}}"/>
+      <h2>{{article.title}}</h2>
+      <p>{{article.created * 1000 | date:'dd.MM.yyyy'}}</p>
+      <ion-spinner ng-show="blog.loadingDetail == article.nid"></ion-spinner>
+      <i ng-show="blog.loadingDetail != article.nid" class="icon ion-ios-arrow-right"></i>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll on-infinite="blog.loadMore()" distance="5%"></ion-infinite-scroll>
+</ion-content>
+</ion-view>

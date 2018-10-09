@@ -1,0 +1,3 @@
+name Firebase Integration for Drupal
+description=Integrates Drupal with Firebase (http://firebase.com/) to save entity data to Firebase.
+core = 7.x

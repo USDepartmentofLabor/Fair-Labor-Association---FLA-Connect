@@ -1,0 +1,39 @@
+<ion-view title="{{ translate('Profile') }}" id="profile-view">
+  <ion-content class="ionic" on-scroll="true" has-bouncing="false">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{ translate('Username') }}</span>
+        <input style="    background-color: white;" type="text" ng-model="profile.name" placeholder="{{ translate('Username') }}"
+          name="name" set-valid-after-change="name-taken" name-taken required spellcheck="false" disabled>
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{ translate('Home City') }}</span>
+        <input style="background-color: white;" type="text" ng-model="profile.field_homecity.und[0].value" placeholder="{{ translate('Home City') }}"
+          name="name" set-valid-after-change="name-taken" name-taken required spellcheck="false" disabled>
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{ translate('Location of Employment') }}</span>
+        <input style="background-color: white;" type="text" ng-model="profile.field_location.und[0].value" placeholder="{{ translate('Location of Employment') }}"
+          name="name" set-valid-after-change="name-taken" name-taken required spellcheck="false" disabled>
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{ translate('Email') }}</span>
+        <input style="background-color: white;" type="email" ng-model="profile.mail" placeholder="{{ translate('Email') }}" name="mail"
+          required set-valid-after-change="email-taken" email-taken spellcheck="false" disabled>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{ translate('Phone Number') }}</span>
+        <input style="background-color: white;" type="text" ng-model="profile.pmperson_phone.und[0].value" placeholder="{{ translate('Phone Number') }}"
+          name="name" set-valid-after-change="name-taken" name-taken required spellcheck="false" disabled>
+      </label>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="logOut()" style="background-color: #37474f;">
+          <span>{{ translate('Logout') }}</span>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

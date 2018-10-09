@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Install and uninstall functions for the bancklehelpdesk module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function banckle_helpdesk_uninstall() {
+  variable_del("banckle_helpdesk_widget_code");
+}

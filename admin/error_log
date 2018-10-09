@@ -1,0 +1,2 @@
+[26-Apr-2018 13:06:13 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/u7763786/fla.heartproject.io/admin/sites/all/modules/token/token.module on line 1005
+[18-May-2018 14:35:21 Europe/Istanbul] PHP Fatal error:  Call to a member function filepath() on boolean in /home/u7763786/fla.heartproject.io/admin/sites/all/modules/backup_migrate/includes/sources.archivesource.inc on line 176

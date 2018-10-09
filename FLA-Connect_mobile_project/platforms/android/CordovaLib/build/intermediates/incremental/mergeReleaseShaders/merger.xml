@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\musta\Desktop\TFS\FLA\FLA-Connect_mobile_project_30.12.2017\platforms\android\CordovaLib\src\main\shaders"/></dataSet><dataSet config="release"><source path="C:\Users\musta\Desktop\TFS\FLA\FLA-Connect_mobile_project_30.12.2017\platforms\android\CordovaLib\src\release\shaders"/></dataSet></merger>

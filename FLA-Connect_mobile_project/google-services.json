@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "954996086949",
+    "firebase_url": "https://flaconnect-1504181179406.firebaseio.com",
+    "project_id": "flaconnect-1504181179406",
+    "storage_bucket": "flaconnect-1504181179406.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954996086949:android:5f6d8bdec3d676b5",
+        "android_client_info": {
+          "package_name": "com.ionicframework.ionicheadlessdrupaldemo488727"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954996086949-2hugpn8v1qidsk35v0kd4bq5php4um6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.ionicheadlessdrupaldemo488727",
+            "certificate_hash": "f8e06d9f1ac73263714f1f6b372a960c157902ff"
+          }
+        },
+        {
+          "client_id": "954996086949-ngf0htrd6qcuqn9v23hntpkevuhpudop.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.ionicheadlessdrupaldemo488727",
+            "certificate_hash": "3a34246e60e31f6b4be5661db9b188358f6c4d8f"
+          }
+        },
+        {
+          "client_id": "954996086949-akc2lh3fsjdnt5ccoc186u18dik64sis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAL02OBZnXCLZBjX_XcoDw3JnaFmRJjEw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954996086949-akc2lh3fsjdnt5ccoc186u18dik64sis.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "954996086949-qfu90f0mm5glajfa6p9gm7am8b3ci8as.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.doktar.fla.destek",
+                "app_store_id": "1274608917"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

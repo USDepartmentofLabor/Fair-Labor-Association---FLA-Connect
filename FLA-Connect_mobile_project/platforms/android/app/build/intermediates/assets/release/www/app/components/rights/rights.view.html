@@ -1,0 +1,163 @@
+<ion-view view-title="{{ translate ('FAQ') }}" class="custom-class">
+ <ion-nav-buttons side="left" ng-repeat="button in buttons">
+    <button class="button" ng-click="doSomething()">
+      I'm a button on the left of the navbar!
+    </button>
+  </ion-nav-buttons>
+<ion-content class="has-header has-footer">
+    <div class="rights">
+      <div class="card rights">
+        <div ng-click="active = !active" ng-class="{'item-expand active': active, 'item-expand inactive': !active}" class="item-expand">
+          <div class="item item-divider">
+           {{ translate ('What measures can I take for occupational health and safety?') }}
+         </div>
+         <div class="item item-text-wrap">
+          <i class="fa fa-medkit fa-5" aria-hidden="true"></i>
+          <br>{{ translate ('Agriculture is one of the riskiest sectors in terms of job health and safety, but if you take the necessary precautions, you can protect yourself against these risks. Always choose to wear shoes in the garden. Use a hat or shawl to protect your sun from the sun against the sun. Wear gloves during hazelnut picking; use masks during hay making and spraying, it will protect you against harmful foreign matters and dust. Ask your employer (garden owner) to inform you about the elements that may be dangerous in the garden conditions and what to do in case of emergency. Keep a first-aid kit in the garden for emergencies. Workers aged 16-18 are defined as young workers. If you are a young worker or pregnant, do not work in jobs that may negatively affect your health, such as carrying sacks, or applying insecticide.') }}
+        </div>      
+      </div>
+      <div ng-click="active = !active" class="item-expand-footer">
+        <i ng-class="{'ion-ios-minus-outline': active, 'ion-ios-plus-outline': !active}"></i>
+     
+      </div>
+    </div>  
+    <div class="card rights">
+      <div ng-click="active1 = !active1" ng-class="{'item-expand active': active1, 'item-expand inactive': !active1}" class="item-expand">
+        <div class="item item-divider">
+         {{ translate ('What should I consider when I make a contract?') }}
+       </div>
+       <div class="item item-text-wrap">
+        <i class="fa fa-pencil-square-o fa-5" aria-hidden="true"></i>
+        <br>{{ translate ('Having a written contract with your employer or gardener ensures that both parties have a common understanding of working conditions. It also helps you to understand your rights and help you to protect your rights. The contract must be signed on both sides for the contract to be valid. Make sure that the written contract clearly states the duration of the work, the working hours, the fee you will receive and when this payment will be paid.') }}
+      </div>
+    </div>
+    <div ng-click="active1 = !active1" class="item-expand-footer">
+      <i ng-class="{'ion-ios-minus-outline': active1, 'ion-ios-plus-outline': !active1}"></i>
+    
+    </div>
+  </div>  
+  <div class="card rights">
+    <div ng-click="active2 = !active2" ng-class="{'item-expand active': active2, 'item-expand inactive': !active2}" class="item-expand">
+      <div class="item item-divider">
+       {{ translate ('How Can I Be Insured?') }}
+     </div>
+     <div class="item item-text-wrap">
+      <i class="fa fa-shield fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('Seasonal agricultural workers can be insured by registering themselves to the Social Security Institution (SGK). Even if you benefit from current social benefits, being insured will ensure that you will secure yourself against work accidents as well as benefit from social security in the long run as a pensioner. To be able to register in Social Security Institution (SGK) you need to be above 18 years old and not benefiting from any social security income. Seasonal agricultural workers can be insured for 30 days by submitting a form to the SGK, approving them to the village headmen, giving the SGK the form again and depositing a 20-day premium.') }}
+    </div>
+  </div>
+  <div ng-click="active2 = !active2" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active2, 'ion-ios-plus-outline': !active2}"></i>
+ 
+  </div>
+</div>  
+<div class="card rights">
+  <div ng-click="active3 = !active3" ng-class="{'item-expand active': active3, 'item-expand inactive': !active3}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('Why Preventing Child Labor is Important?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-child fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('It is illegal for individuals aged 0-15 years old working in the garden. By allowing your children to work, you prevent them from continuing their education life and being successful, and you have failed to protect your children as parents. Because your child working in seasonal agricultural jobs, his/her success can be adversely affected and they might have to leave the school early. Your child should be kept away from work for a good future and a successful school life.') }}
+    </div>
+  </div>
+  <div ng-click="active3 = !active3" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active3, 'ion-ios-plus-outline': !active3}"></i>
+ 
+  </div>
+</div> 
+<div class="card rights">
+  <div ng-click="active4 = !active4" ng-class="{'item-expand active': active4, 'item-expand inactive': !active4}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('How to determine the daily wages in the agricultural sector and how can I calculate my daily wage?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-money fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('The provincial or regional based commissions determine the daily fee according to the duties. The daily fee determined based on national minimum wage and daily wage cannot be less than nationally set minimum wage. You can calculate your monthly rate by multiplying the daily rate by 30 (daily rate x30). It is against the law for your business to deduct commission from your daily rate. The fee for the business agent (labor intermediary) must be paid separately by the gardener.') }}
+
+    </div>
+  </div>
+  <div ng-click="active4 = !active4" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active4, 'ion-ios-plus-outline': !active4}"></i>
+    
+  </div>
+</div> 
+<div class="card rights">
+  <div ng-click="active5 = !active5" ng-class="{'item-expand active': active5, 'item-expand inactive': !active5}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('How to Benefit from Health Services?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-heartbeat fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('Get your family physicians phone number and name, and let your family physician know before start migrating for seasonal agriculture work. Your family physician can direct you to appropriate institutions for checkups, especially if you have a newborn baby who needs to be vaccinated or if you are pregnant. Within the scope of Community Health Center and Affiliated Regulations, you can benefit from the Community Health Centers primary health care services where you are indicated to be a mobile agriculture worker.') }}
+
+
+    </div>
+  </div>
+  <div ng-click="active5 = !active5" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active5, 'ion-ios-plus-outline': !active5}"></i>
+    
+  </div>
+</div> 
+<div class="card rights">
+  <div ng-click="active6 = !active6" ng-class="{'item-expand active': active6, 'item-expand inactive6': !active6}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('How to benefit from educational services?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-graduation-cap fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('According to the MoNE General Circular No. 27531, children belong to of seasonal agricultural community and in the intermediary school age can be placed primarily in regional boarding schools as per compulsory education requirement. If it is not possible for them to be boarded in regional schools, children in both elementary and intermediary school can benefit from the migrant educational services where they migrate. In order to benefit from these opportunities, you must apply to the provincial or district education directorates in your area of permanent residence or immigration. According to the Seasonal Agricultural Workers Circular, seasonal agricultural workers can benefit from training and vocational courses offered at the provincial directorates of labor and employment institutions, public education centers and vocational training centers, when they return to their permanent residence. Provincial national education directorates, provides educational and social activities in temporary settlement areas. Information about these centers can be obtained from the provincial and district national education directorates. There are summer school facilities offered in hazelnut harvesting regions and official camp sites in selected regions, by non-governmental organizations and international organizations. Summer schools are open to all children in school age and you can learn where they are from village headmen and governorates.') }}
+    </div>
+  </div>
+  <div ng-click="active6 = !active6" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active6, 'ion-ios-plus-outline': !active6}"></i>
+  
+  </div>
+</div> 
+<div class="card rights">
+  <div ng-click="active7 = !active7" ng-class="{'item-expand active': active7, 'item-expand inactive': !active7}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('What are the regulations related to the conditions of the settlements?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-bed fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('Worker accommodation areas established by Special Provincial Administrations should meet the minimum requirements such as washing, dishwashing, toilet, bathroom. It is the duty of local governments to dispose of collective tent sites against pests and to dispose of their garbage.') }}
+
+    </div>
+  </div>
+  <div ng-click="active7 = !active7" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active7, 'ion-ios-plus-outline': !active7}"></i>
+    
+  </div>
+</div> 
+<div class="card rights">
+  <div ng-click="active8 = !active8" ng-class="{'item-expand active': active8, 'item-expand inactive': !active8}" class="item-expand">
+    <div class="item item-divider">
+      {{ translate ('What can I do when I face a situation that is against the law?') }}
+    </div>
+    <div class="item item-text-wrap">
+      <i class="fa fa-shield fa-5" aria-hidden="true"></i>
+      <br>
+      {{ translate ('You can contact the following telephone numbers if you encounter legal cases or need assistance:') }}
+      <br>
+      {{ translate ('For human trafficking and forced foreign laborers: YIMER 157') }}<br>
+      {{ translate ('For all kinds of complaints, complaints and consultations about working conditions: ALO 170') }}<br>
+      {{ translate ('For violence and abuse issues: ALO155') }}<br>
+      {{ translate ('For children in need of assistance or protection: ALO183') }}
+    </div>
+  </div>
+  <div ng-click="active8 = !active8" class="item-expand-footer">
+    <i ng-class="{'ion-ios-minus-outline': active8, 'ion-ios-plus-outline': !active8}"></i>
+  
+  </div>
+</div> 
+</div>
+<br><br>  
+</ion-content>
+</ion-view>

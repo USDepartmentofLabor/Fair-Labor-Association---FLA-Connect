@@ -1,0 +1,52 @@
+<ion-view title="Login">
+  <!-- <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons> -->
+  <ion-content>
+      <p class="padding">
+          {{ translate('Please write the username information to login.') }}
+        </p>
+    <form name="login.loginForm" novalidate="" ng-submit="login.doLogin()" style="margin:0;">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">{{ translate('Username') }}</span>
+          <input type="text" ng-model="login.loginData.username" placeholder="{{ translate('Username') }}" name="username" required set-valid-after-change="inactive-or-blocked"
+            inactive-or-blocked spellcheck="false">
+          <ng-messages class="form-errors" for="login.loginForm.username.$error" ng-if="login.loginForm.username.$touched &&  login.loginForm.username.$invalid ||  login.loginForm.username.$invalid && login.loginForm.$submitted">
+            <div class="form-error" ng-message="required">{{ translate('This field is required.') }}</div>
+            <div class="form-error" ng-message="inactive-or-blocked">"The username {{login.loginData.username}} has not been activated or is blocked.</div>
+          </ng-messages>
+        </label>
+        <!-- <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="login.loginData.password" placeholder="Password" name="password" required spellcheck="false">
+          <ng-messages class="form-errors" for="login.loginForm.password.$error" ng-if="login.loginForm.password.$touched &&  login.loginForm.password.$invalid">
+            <div class="form-error" ng-message="required">This field is required.</div>
+            <div class="form-error" ng-message="password">This is no valid password.</div>
+          </ng-messages>
+        </label> -->
+        <div class="padding">
+          <div class="form-errors" ng-show="login.loginForm.$submitted">
+            <div class="form-error" ng-bind-html="error" ng-repeat="error in login.serverErrors track by $index"></div>
+          </div>
+        </div>
+        <div class="padding">
+          <button class="button button-block button-positive button-spinner" style=" background-color: #37474f;">
+            <span ng-if="!login.loginIsPending">{{ translate('Login')}}</span>
+            <span ng-if="login.loginIsPending">{{ translate('Logging in')}}</span>
+            <ion-spinner ng-if="login.loginIsPending"></ion-spinner>
+          </button>
+          <!-- <button class="button button-block button-positive" ui-sref="app.forget" style=" background-color: #37474f;">
+            <span>Şifremi Unuttum</span>
+          </button> -->
+
+        </div>
+      </div>
+    </form>
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="login.goToRegister()" style=" background-color: #37474f;">
+        <span>{{ translate('New Account') }}</span>
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

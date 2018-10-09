@@ -1,1 +1,1 @@
-# Fair-Labor-Association---FLA-Connect
+# Fair-Labor-Association-FLA-Connect

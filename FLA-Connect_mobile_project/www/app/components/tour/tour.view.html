@@ -1,0 +1,142 @@
+<ion-view view-title="{{ translate ('Help') }}" hide-back-button="true" class="howto">
+    <ion-pane class="has-footer">
+        <ion-nav-bar class="bar-energized">
+            <ion-nav-buttons side="left">
+                <button id="" class="button button-slide prev no-animation" ng-click="prev()" ng-show="activeIndex > 0">
+            {{ translate ('BACK') }}
+          </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="secondary">
+                <button id="" class="button button-slide next no-animation" ng-click="next()" ng-show="activeIndex < 3">
+            {{ translate ('NEXT') }}
+          </button>
+                <a id="" class="button button-slide  no-animation" href="#/app/giris" ng-show="activeIndex == 3">
+            {{ translate ('END') }}
+          </a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <ion-slides options="tour.options" class="ion-slides has-header" slider="data.slider" ng-if="true">
+            <ion-slide-page>
+                <h3>{{ translate ('What is FLA Connect?') }}</h3>
+                <p>
+                    {{ translate ('FLA Connect aims to provide workers with multiple ways for communication including information sharing, feedback loop and raising concerns and complaints directly to the FLA.') }}
+                </p>
+                <div class="swiper-pagination"></div>
+                <div class="iphone">
+                    <div class="iphone-top">
+                        <span class="camera"></span>
+                        <span class="sensor"></span>
+                        <span class="speaker"></span>
+                    </div>
+                    <div class="iphone-screen">
+                        <img src="{{ translate ('assets/img/screenshots/home.png') }}">
+                    </div>
+                    <div class="buttons">
+                        <span class="on-off"></span>
+                        <span class="sleep"></span>
+                        <span class="up"></span>
+                        <span class="down"></span>
+                    </div>
+                    <div class="bottom-bar"></div>
+                    <div class="iphone-bottom">
+                        <span></span>
+                    </div>
+                </div>
+                </div>
+            </ion-slide-page>
+            <ion-slide-page>
+                <h3>{{ translate ('Contact us in writing') }}</h3>
+                <p>
+                    {{ translate ('FLA Connect offers three ways for submitting complaints and grievances.') }}
+                </p>
+                <br>
+                <ul>
+                    <li><strong>{{ translate ('1. Support Request Form') }}</strong></li>
+                    <li><strong>{{ translate ('2. Live Chat') }}</strong></li>
+                    <li><strong>{{ translate ('3. E-mail') }}</strong></li>
+                </ul>
+                <div class="iphone">
+                    <div class="iphone-top">
+                        <span class="camera"></span>
+                        <span class="sensor"></span>
+                        <span class="speaker"></span>
+                    </div>
+
+                    <div class="iphone-screen">
+                        <img src="{{ translate ('assets/img/screenshots/grievance.png') }}">
+                    </div>
+                    <div class="buttons">
+                        <span class="on-off"></span>
+                        <span class="sleep"></span>
+                        <span class="up"></span>
+                        <span class="down"></span>
+                    </div>
+                    <div class="bottom-bar"></div>
+                    <div class="iphone-bottom">
+                        <span></span>
+                    </div>
+                </div>
+                </div>
+            </ion-slide-page>
+            <ion-slide-page>
+                <h3>{{ translate ('FLA Connect Hotline') }}</h3>
+                <p>
+                    {{ translate ('You can call the FLA Connect Hotline directly by touching the phone icon on the main screen of the application.') }}
+                </p>
+                <div class="iphone">
+                    <div class="iphone-top">
+                        <span class="camera"></span>
+                        <span class="sensor"></span>
+                        <span class="speaker"></span>
+                    </div>
+
+                    <div class="iphone-screen">
+                        <img src="{{ translate ('assets/img/screenshots/livechat.png') }}">
+                    </div>
+                    <div class="buttons">
+                        <span class="on-off"></span>
+                        <span class="sleep"></span>
+                        <span class="up"></span>
+                        <span class="down"></span>
+                    </div>
+                    <div class="bottom-bar"></div>
+                    <div class="iphone-bottom">
+                        <span></span>
+                    </div>
+                </div>
+                </div>
+            </ion-slide-page>
+            <ion-slide-page>
+                <h3>{{ translate ('FAQ') }}</h3>
+                <p>
+                    {{ translate ('You can access vital information regarding workers rights, security and health at workplace and access to public sevices by tapping the FAQ icon on the main screen.') }}
+                </p>
+
+                <div class="iphone">
+                    <div class="iphone-top">
+                        <span class="camera"></span>
+                        <span class="sensor"></span>
+                        <span class="speaker"></span>
+                    </div>
+
+                    <div class="iphone-screen">
+                        <img src="{{ translate ('assets/img/screenshots/info.png') }}">
+                    </div>
+                    <div class="buttons">
+                        <span class="on-off"></span>
+                        <span class="sleep"></span>
+                        <span class="up"></span>
+                        <span class="down"></span>
+                    </div>
+                    <div class="bottom-bar"></div>
+                    <div class="iphone-bottom">
+                        <span></span>
+                    </div>
+                </div>
+                </div>
+
+            </ion-slide-page>
+        </ion-slides>
+    </ion-pane>
+</ion-view>

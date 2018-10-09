@@ -1,0 +1,4 @@
+{
+  "android": "https://github.com/apache/cordova-android.git",
+  "ios": "https://github.com/apache/cordova-ios.git"
+}

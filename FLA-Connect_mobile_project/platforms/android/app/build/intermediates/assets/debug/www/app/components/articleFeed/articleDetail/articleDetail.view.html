@@ -1,0 +1,16 @@
+<ion-view id="girisView" class="article-detail" title="{{ translate ('FLA Connect') }} - {{articleDetail.title}}">
+  <ion-content class="has-header has-footer">
+    <div class="card">
+      <div class="item" ng-class="articleDetail.pathToUserImg !== false?'item-avatar':''">
+        <img ng-if="articleDetail.pathToUserImg" ng-src="{{articleDetail.pathToUserImg}}">
+        <div class="item item-body">
+          <img ng-if="articleDetail.pathToImg" class="full-image" ng-src="{{articleDetail.pathToImg}}">
+          <p class="custom-class" ng-bind-html='articleDetail.pm_description.und[0].value'>
+          </p>
+          <div class="custom-class" ng-bind-html='articleDetail.body.und[0].value'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

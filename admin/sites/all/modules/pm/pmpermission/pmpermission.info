@@ -1,0 +1,16 @@
+name = PM Permission
+description = "Provides permission handling for the Project Management Suite of modules. Warning: Without this module, no access controls are applied to PM."
+core = 7.x
+package = Project Management
+configure = admin/config/pm/pmpermission
+
+dependencies[] = pm
+
+files[] = pmpermission.test
+
+; Information added by Drupal.org packaging script on 2016-04-18
+version = "7.x-2.2"
+core = "7.x"
+project = "pm"
+datestamp = "1461007768"
+

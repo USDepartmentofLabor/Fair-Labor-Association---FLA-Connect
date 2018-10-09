@@ -1,0 +1,44 @@
+diff --git a/votingapi.admin.inc b/votingapi.admin.inc
+index 2fb9d87..e061a3d 100644
+--- a/votingapi.admin.inc
++++ b/votingapi.admin.inc
+@@ -27,6 +27,17 @@ function votingapi_settings_form($form_state) {
+ '#options' => $period
+ );
+
++  $form['votingapi_anonymous_validation_method'] = array(
+  +    '#type' => 'select',
+  +    '#title' => t('Anonymous validation method'),
+  +    '#description' => t('By default, voting api will handle vote validation on unique IP. With this setting, you can choose to validate on the unique session ID.'),
+  +    '#default_value' => variable_get('votingapi_anonymous_validation_method', 'ip'),
+  +    '#options' => array(
+    +      'ip' => t('Normal approach with IP validation'),
+    +      'session' => t('Session id validation')
+    +    )
+  +  );
++
+$form['votingapi_calculation_schedule'] = array(
+ '#type' => 'radios',
+ '#title' => t('Vote tallying'),
+ diff --git a/votingapi.module b/votingapi.module
+ index 4d152fe..19ace0a 100644
+ --- a/votingapi.module
+ +++ b/votingapi.module
+ @@ -187,7 +187,7 @@ function votingapi_current_user_identifier() {
+   global $user;
+   $criteria = array('uid' => $user->uid);
+   if (!$user->uid) {
+    -    $criteria['vote_source'] = ip_address();
+    +    $criteria['vote_source'] = variable_get('votingapi_anonymous_validation_method', 'ip') == 'session' ? session_id() : ip_address();
+  }
+  return $criteria;
+}
+@@ -593,7 +593,7 @@ function _votingapi_prep_vote(&$vote) {
+ 'tag' => 'vote',
+ 'uid' => $user->uid,
+ 'timestamp' => REQUEST_TIME,
+ -      'vote_source' => ip_address(),
+ +      'vote_source' => (variable_get('votingapi_anonymous_validation_method', 'ip') == 'session' ? session_id() : ip_address()),
+ 'prepped' => TRUE
+ );
+}

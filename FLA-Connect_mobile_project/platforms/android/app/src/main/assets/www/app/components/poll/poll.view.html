@@ -1,0 +1,32 @@
+<ion-view id="pollView" class="poll-detail" cache-view="false" title="{{ translate ('Surveys') }}">
+  <ion-content class="has-header has-footer">
+    <div class="card poll" ng-repeat="poll in pollPage.polls track by $index" id="{{poll.nid}}" ng-init="parentIndex = $index" ng-class="{hidden: '{{getCheck($index)}}' == 'true'}">
+      <div class="item item-text-wrap">
+        <h2 class="item-icon-left"><i class="icon fa fa-hand-o-right"></i>
+          {{poll.title}}</h2>
+        </div>
+        <div class="item item-text-wrap last" >
+          <p class="custom-class" ng-bind-html='poll.body.und[0].value'>
+          </p>
+
+          <ul ng-repeat="vote in poll.advpoll_choice">
+            <li ng-repeat="voteselect in vote">
+              <div class="row" >
+                <ion-checkbox ng-model="poll.checked" ng-change="updateThemaLocalStorage(parentIndex)"  ng-click="pollPage.sendNid(poll);pollPage.sendVote(voteselect);clickVote = ! clickVote" ><button class="col button button-outline button-dark button-spinner">{{voteselect.choice}}</button>
+                </ion-checkbox>
+                <div class="voted-screen" ng-show="clickVote">
+                  <h3 >{{ translate ('You have cast your vote for this survey.') }}<br>{{ translate ('Thank you.') }}</h3>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h4 class="poll-empty" ng-if="everythingIsHidden()">{{ translate ('There are no survey questions at this time.') }} <br>{{ translate ('Thank you.') }}</h4>
+
+    </div>
+    <!--         <ion-infinite-scroll on-infinite="pollPage.loadMore()" distance="5%"></ion-infinite-scroll> -->
+        <ion-refresher on-refresh="pollPage.doRefresh()"></ion-refresher>
+  </ion-content>
+</ion-view>

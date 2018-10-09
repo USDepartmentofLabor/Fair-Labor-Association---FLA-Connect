@@ -1,0 +1,45 @@
+<ion-view id="emergency" title="{{ translate ('Write to us') }}">
+  <ion-nav-buttons side="left" ng-repeat="button in buttons">
+    <button class="button" ng-click="doSomething()">
+      I'm a button on the left of the navbar!
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="has-header fade-in has-footer reveal-animation">
+    <div class="list">
+      <a href="#/app/sikayetim-var">
+        <div class="row item padding">
+          <div class="col col-25">
+            <div class="icon center icon-form center"></div>
+          </div>
+          <div class="col col-75">
+            <h2>{{ translate ('Support Request Form') }}</h2>
+            <p>{{ translate ('Write your complaints and problems to us and we will get in touch with you.') }}</p></div>
+          </div>
+        </a>
+
+        <a href="#/app/canli-yardim">
+          <div class="row item padding">
+            <div class="col col-25">
+              <div class="icon center icon-livechat"></div>
+            </div>
+            <div class="col col-75">
+              <h2>{{ translate ('Live Chat') }}</h2>
+              <p>{{ translate ('Get support from our agents during the working hourse via Live Chat.') }}</p></div>
+            </div>
+          </a>
+          <a href="mailto:flaconnecttk@fairlabor.org">
+            <div class="row item padding">
+              <div class="col col-25">
+                <div class="icon center icon-email"></div>
+              </div>
+              <div class="col col-75">
+                <h2>{{ translate ('E-mail') }}</h2>
+                <p>{{ translate ('Contact us via E-mail.') }}</p></div>
+              </div>
+            </a>
+
+
+          </ion-content>
+        </ion-view>
+
